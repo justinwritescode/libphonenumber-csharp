@@ -81,7 +81,7 @@ namespace PhoneNumbers
         // This is the minimum length of national number accrued that is required to trigger the
         // formatter. The first element of the leadingDigitsPattern of each numberFormat contains a
         // regular expression that matches up to this number of digits.
-        private static readonly int MinLeadingDigitsLength = 3;
+        private const int MinLeadingDigitsLength = 3;
 
         // The digits that have not been entered yet will be represented by a \u2008, the punctuation
         // space.
@@ -205,7 +205,7 @@ namespace PhoneNumbers
         private void NarrowDownPossibleFormats(string leadingDigits)
         {
             var indexOfLeadingDigitsPattern = leadingDigits.Length - MinLeadingDigitsLength;
-            for (var i = 0; i < possibleFormats.Count; )
+            for (var i = 0; i < possibleFormats.Count;)
             {
                 var format = possibleFormats[i];
                 // Keep everything that isn't restricted by leading digits.
@@ -435,7 +435,7 @@ namespace PhoneNumbers
                 // Remove the previously extracted NDD from prefixBeforeNationalNumber. We cannot simply set
                 // it to empty string because people sometimes incorrectly enter national prefix after the
                 // country code, e.g +44 (0)20-1234-5678.
-                var indexOfPreviousNdd = prefixBeforeNationalNumber.ToString().LastIndexOf(extractedNationalPrefix, StringComparison.Ordinal);
+                var indexOfPreviousNdd = prefixBeforeNationalNumber.ToString().LastIndexOf(extractedNationalPrefix, Ordinal);
                 prefixBeforeNationalNumber.Length = indexOfPreviousNdd;
             }
             return !extractedNationalPrefix.Equals(RemoveNationalPrefixFromNationalNumber());

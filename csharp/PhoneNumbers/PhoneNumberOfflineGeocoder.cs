@@ -43,22 +43,22 @@ namespace PhoneNumbers
 
         public string GetDisplayCountry(string language)
         {
-            if(string.IsNullOrEmpty(Country))
+            if (string.IsNullOrEmpty(Country))
                 return "";
             var name = GetCountryName(Country, language);
-            if(name != null)
+            if (name != null)
                 return name;
             var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            if(lang != language)
+            if (lang != language)
             {
                 name = GetCountryName(Country, lang);
-                if(name != null)
+                if (name != null)
                     return name;
             }
-            if(language != "en" && lang != "en")
+            if (language != "en" && lang != "en")
             {
                 name = GetCountryName(Country, "en");
-                if(name != null)
+                if (name != null)
                     return name;
             }
             name = GetCountryName(Country, Language);
@@ -101,7 +101,7 @@ namespace PhoneNumbers
         internal PhoneNumberOfflineGeocoder(string phonePrefixDataDirectory, Assembly asm = null)
         {
             var files = new SortedDictionary<int, HashSet<string>>();
-            asm ??= typeof(PhoneNumberOfflineGeocoder).Assembly;
+            asm ??= typeof(PhoneNumberOfflineGeocoder).GetAssembly();
             var allNames = asm.GetManifestResourceNames();
             var prefix = asm.GetName().Name + "." + phonePrefixDataDirectory;
             var names = allNames.Where(n => n.StartsWith(prefix, StringComparison.Ordinal));
@@ -113,7 +113,7 @@ namespace PhoneNumbers
                 {
                     country = int.Parse(name[1], CultureInfo.InvariantCulture);
                 }
-                catch(FormatException)
+                catch (FormatException)
                 {
                     throw new Exception("Failed to parse geocoding file name: " + name);
                 }

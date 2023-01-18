@@ -96,12 +96,12 @@ namespace PhoneNumbers
         private static PhoneNumberToTimeZonesMapper Create(string timezoneDataDirectory)
         {
             char[] splitters = { '&' }; // separates multiple entries in a string in input file
-            var asm = typeof(PhoneNumberToTimeZonesMapper).Assembly;
+            var asm = typeof(PhoneNumberToTimeZonesMapper).GetAssembly();
             var allNames = asm.GetManifestResourceNames();
             var prefix = asm.GetName().Name + "." + timezoneDataDirectory;
-            var names = allNames.Where(n => n.StartsWith(prefix, StringComparison.Ordinal)).ToList();
+            var names = allNames.Where(n => n.StartsWith(prefix, Ordinal)).ToList();
             // read map file
-            var mapFile = names.Where(s => s.EndsWith(TZMAP_Filename, StringComparison.Ordinal)).First();
+            var mapFile = names.Where(s => s.EndsWith(TZMAP_Filename, Ordinal)).First();
             using var fp = asm.GetManifestResourceStream(mapFile);
             var prefixMap = TimezoneMapDataReader.GetPrefixMap(fp, splitters);
 

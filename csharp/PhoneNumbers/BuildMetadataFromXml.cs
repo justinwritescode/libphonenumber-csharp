@@ -25,57 +25,197 @@ using System.Xml.Linq;
 
 namespace PhoneNumbers
 {
+    /// <summary>
+    /// The build metadata from xml.
+    /// </summary>
     public class BuildMetadataFromXml
     {
         // String constants used to fetch the XML nodes and attributes.
+        /// <summary>
+        /// The CARRIE R COD E FORMATTIN G RULE.
+        /// </summary>
         private const string CARRIER_CODE_FORMATTING_RULE = "carrierCodeFormattingRule";
 
+        /// <summary>
+        /// The CARRIE R SPECIFIC.
+        /// </summary>
         private const string CARRIER_SPECIFIC = "carrierSpecific";
+        /// <summary>
+        /// The COUNTR Y CODE.
+        /// </summary>
         private const string COUNTRY_CODE = "countryCode";
+        /// <summary>
+        /// The EMERGENCY.
+        /// </summary>
         private const string EMERGENCY = "emergency";
+        /// <summary>
+        /// The EXAMPL E NUMBER.
+        /// </summary>
         private const string EXAMPLE_NUMBER = "exampleNumber";
+        /// <summary>
+        /// The FIXE D LINE.
+        /// </summary>
         private const string FIXED_LINE = "fixedLine";
+        /// <summary>
+        /// The FORMAT.
+        /// </summary>
         private const string FORMAT = "format";
+        /// <summary>
+        /// The GENERA L DESC.
+        /// </summary>
         private const string GENERAL_DESC = "generalDesc";
+        /// <summary>
+        /// The INTERNATIONA L PREFIX.
+        /// </summary>
         private const string INTERNATIONAL_PREFIX = "internationalPrefix";
+        /// <summary>
+        /// The INT L FORMAT.
+        /// </summary>
         private const string INTL_FORMAT = "intlFormat";
+        /// <summary>
+        /// The LEADIN G DIGITS.
+        /// </summary>
         private const string LEADING_DIGITS = "leadingDigits";
+        /// <summary>
+        /// The MAI N COUNTR Y FO R CODE.
+        /// </summary>
         private const string MAIN_COUNTRY_FOR_CODE = "mainCountryForCode";
+        /// <summary>
+        /// The MOBILE.
+        /// </summary>
         private const string MOBILE = "mobile";
+        /// <summary>
+        /// The MOBIL E NUMBE R PORTABL E REGION.
+        /// </summary>
         private const string MOBILE_NUMBER_PORTABLE_REGION = "mobileNumberPortableRegion";
+        /// <summary>
+        /// The NATIONA L NUMBE R PATTERN.
+        /// </summary>
         private const string NATIONAL_NUMBER_PATTERN = "nationalNumberPattern";
+        /// <summary>
+        /// The NATIONA L PREFIX.
+        /// </summary>
         private const string NATIONAL_PREFIX = "nationalPrefix";
+        /// <summary>
+        /// The NATIONA L PREFI X FORMATTIN G RULE.
+        /// </summary>
         private const string NATIONAL_PREFIX_FORMATTING_RULE = "nationalPrefixFormattingRule";
 
+        /// <summary>
+        /// The NATIONA L PREFI X OPTIONA L WHE N FORMATTING.
+        /// </summary>
         private const string NATIONAL_PREFIX_OPTIONAL_WHEN_FORMATTING =
             "nationalPrefixOptionalWhenFormatting";
 
+        /// <summary>
+        /// The NATIONA L PREFI X FO R PARSING.
+        /// </summary>
         private const string NATIONAL_PREFIX_FOR_PARSING = "nationalPrefixForParsing";
+        /// <summary>
+        /// The NATIONA L PREFI X TRANSFOR M RULE.
+        /// </summary>
         private const string NATIONAL_PREFIX_TRANSFORM_RULE = "nationalPrefixTransformRule";
+        /// <summary>
+        /// The N O INTERNATIONA L DIALLING.
+        /// </summary>
         private const string NO_INTERNATIONAL_DIALLING = "noInternationalDialling";
+        /// <summary>
+        /// The NUMBE R FORMAT.
+        /// </summary>
         private const string NUMBER_FORMAT = "numberFormat";
+        /// <summary>
+        /// The PAGER.
+        /// </summary>
         private const string PAGER = "pager";
+        /// <summary>
+        /// The PATTERN.
+        /// </summary>
         private const string PATTERN = "pattern";
+        /// <summary>
+        /// The PERSONA L NUMBER.
+        /// </summary>
         private const string PERSONAL_NUMBER = "personalNumber";
+        /// <summary>
+        /// The POSSIBL E LENGTHS.
+        /// </summary>
         private const string POSSIBLE_LENGTHS = "possibleLengths";
+        /// <summary>
+        /// The NATIONAL.
+        /// </summary>
         private const string NATIONAL = "national";
+        /// <summary>
+        /// The LOCA L ONLY.
+        /// </summary>
         private const string LOCAL_ONLY = "localOnly";
+        /// <summary>
+        /// The PREFERRE D EXT N PREFIX.
+        /// </summary>
         private const string PREFERRED_EXTN_PREFIX = "preferredExtnPrefix";
+        /// <summary>
+        /// The PREFERRE D INTERNATIONA L PREFIX.
+        /// </summary>
         private const string PREFERRED_INTERNATIONAL_PREFIX = "preferredInternationalPrefix";
+        /// <summary>
+        /// The PREMIU M RATE.
+        /// </summary>
         private const string PREMIUM_RATE = "premiumRate";
+        /// <summary>
+        /// The SHARE D COST.
+        /// </summary>
         private const string SHARED_COST = "sharedCost";
+        /// <summary>
+        /// The SHOR T CODE.
+        /// </summary>
         private const string SHORT_CODE = "shortCode";
+        /// <summary>
+        /// The SM S SERVICES.
+        /// </summary>
         private const string SMS_SERVICES = "smsServices";
+        /// <summary>
+        /// The STANDAR D RATE.
+        /// </summary>
         private const string STANDARD_RATE = "standardRate";
+        /// <summary>
+        /// The TOL L FREE.
+        /// </summary>
         private const string TOLL_FREE = "tollFree";
+        /// <summary>
+        /// The UAN.
+        /// </summary>
         private const string UAN = "uan";
+        /// <summary>
+        /// The VOICEMAIL.
+        /// </summary>
         private const string VOICEMAIL = "voicemail";
+        /// <summary>
+        /// The VOIP.
+        /// </summary>
         private const string VOIP = "voip";
 
         // Build the PhoneMetadataCollection from the input XML file.
+        /// <summary>
+        /// Build the phone metadata collection.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="liteBuild">If true, lite build.</param>
+        /// <param name="specialBuild">If true, special build.</param>
+        /// <param name="isShortNumberMetadata">If true, is short number metadata.</param>
+        /// <param name="isAlternateFormatsMetadata">If true, is alternate formats metadata.</param>
+        /// <returns>A PhoneMetadataCollection.</returns>
         public static PhoneMetadataCollection BuildPhoneMetadataCollection(string name, bool liteBuild, bool specialBuild, bool isShortNumberMetadata, bool isAlternateFormatsMetadata)
             => BuildPhoneMetadata(name, null, liteBuild, specialBuild, isShortNumberMetadata, isAlternateFormatsMetadata, nameSuffix: false);
 
+        /// <summary>
+        /// Build the phone metadata.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="asm">The asm.</param>
+        /// <param name="liteBuild">If true, lite build.</param>
+        /// <param name="specialBuild">If true, special build.</param>
+        /// <param name="isShortNumberMetadata">If true, is short number metadata.</param>
+        /// <param name="isAlternateFormatsMetadata">If true, is alternate formats metadata.</param>
+        /// <param name="nameSuffix">If true, name suffix.</param>
+        /// <returns>A PhoneMetadataCollection.</returns>
         internal static PhoneMetadataCollection BuildPhoneMetadata(string name, Assembly asm = null,
             bool liteBuild = false, bool specialBuild = false, bool isShortNumberMetadata = false,
             bool isAlternateFormatsMetadata = false,
@@ -86,16 +226,33 @@ namespace PhoneNumbers
                 isAlternateFormatsMetadata);
         }
 
+        /// <summary>
+        /// Gets the stream.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="asm">The asm.</param>
+        /// <param name="nameSuffix">If true, name suffix.</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns>A Stream.</returns>
         internal static Stream GetStream(string name, Assembly asm = null, bool nameSuffix = true)
         {
-            asm ??= typeof(PhoneNumberUtil).Assembly;
+            asm ??= typeof(PhoneNumberUtil).GetAssembly();
             if (nameSuffix)
-                name = asm.GetManifestResourceNames().FirstOrDefault(n => n.EndsWith(name, StringComparison.Ordinal)) ??
+                name = asm.GetManifestResourceNames().FirstOrDefault(n => n.EndsWith(name, Ordinal)) ??
                        throw new ArgumentException(name + " resource not found");
 
             return asm.GetManifestResourceStream(name);
         }
 
+        /// <summary>
+        /// Build the phone metadata from stream.
+        /// </summary>
+        /// <param name="metadataStream">The metadata stream.</param>
+        /// <param name="liteBuild">If true, lite build.</param>
+        /// <param name="specialBuild">If true, special build.</param>
+        /// <param name="isShortNumberMetadata">If true, is short number metadata.</param>
+        /// <param name="isAlternateFormatsMetadata">If true, is alternate formats metadata.</param>
+        /// <returns>A PhoneMetadataCollection.</returns>
         internal static PhoneMetadataCollection BuildPhoneMetadataFromStream(Stream metadataStream,
             bool liteBuild = false, bool specialBuild = false, bool isShortNumberMetadata = false,
             bool isAlternateFormatsMetadata = false)
@@ -122,6 +279,11 @@ namespace PhoneNumbers
         // represented by that country code. In the case of multiple countries sharing a calling code,
         // such as the NANPA countries, the one indicated with "isMainCountryForCode" in the metadata
         // should be first.
+        /// <summary>
+        /// Builds the country code to region code map.
+        /// </summary>
+        /// <param name="metadataCollection">The metadata collection.</param>
+        /// <returns><![CDATA[Dictionary<int, List<string>>]]></returns>
         public static Dictionary<int, List<string>> BuildCountryCodeToRegionCodeMap(
             PhoneMetadataCollection metadataCollection)
         {
@@ -150,13 +312,24 @@ namespace PhoneNumbers
             return countryCodeToRegionCodeMap;
         }
 
+        /// <summary>
+        /// The valid patterns.
+        /// </summary>
         private static readonly HashSet<string> ValidPatterns = new HashSet<string>();
 
-        public static string ValidateRE(string regex)
-        {
-            return ValidateRE(regex, false);
-        }
+        /// <summary>
+        /// Validates the RE.
+        /// </summary>
+        /// <param name="regex">The regex.</param>
+        /// <returns>A string.</returns>
+        public static string ValidateRE(string regex) => ValidateRE(regex, false);
 
+        /// <summary>
+        /// Validates the RE.
+        /// </summary>
+        /// <param name="regex">The regex.</param>
+        /// <param name="removeWhitespace">If true, remove whitespace.</param>
+        /// <returns>A string.</returns>
         public static string ValidateRE(string regex, bool removeWhitespace)
         {
             // Removes all the whitespace and newline from the regexp. Not using pattern compile options to
@@ -191,14 +364,23 @@ namespace PhoneNumbers
             return regex;
         }
 
-        /**
-        * Returns the national prefix of the provided country element.
-        */
+        /// <summary>
+        /// Returns <inheritdoc cref="GetNationalPrefix(XElement)" path="/returns" />.
+        /// </summary>
+        /// <param name="element">The country element.</param>
+        /// <returns>the national prefix of the provided country element.</returns>
         public static string GetNationalPrefix(XElement element)
         {
             return element.GetAttribute(NATIONAL_PREFIX);
         }
 
+        /// <summary>
+        /// Load territory tag metadata.
+        /// </summary>
+        /// <param name="regionCode">The region code.</param>
+        /// <param name="element">The element.</param>
+        /// <param name="nationalPrefix">The national prefix.</param>
+        /// <returns>A PhoneMetadata.Builder.</returns>
         public static PhoneMetadata.Builder LoadTerritoryTagMetadata(string regionCode, XElement element,
             string nationalPrefix)
         {
@@ -236,13 +418,15 @@ namespace PhoneNumbers
             return metadata;
         }
 
-        /**
-        * Extracts the pattern for international format. If there is no intlFormat, default to using the
-        * national format. If the intlFormat is set to "NA" the intlFormat should be ignored.
-        *
-        * @throws  RuntimeException if multiple intlFormats have been encountered.
-        * @return  whether an international number format is defined.
-        */
+        /// <summary>
+        /// Extracts the pattern for international format. If there is no intlFormat, default to using the
+        /// national format. If the intlFormat is set to "NA" the intlFormat should be ignored.
+        /// </summary>
+        /// <param name="metadata">The metadata.</param>
+        /// <param name="numberFormatElement">The number format element.</param>
+        /// <param name="nationalFormat">The national format.</param>
+        /// <exception cref="Exception">RuntimeException if multiple intlFormats have been encountered</exception>
+        /// <returns>whether an international number format is defined.</returns>
         public static bool LoadInternationalFormat(PhoneMetadata.Builder metadata,
             XElement numberFormatElement,
             string nationalFormat)
@@ -295,11 +479,18 @@ namespace PhoneNumbers
         }
 
         /**
-        *  Extracts the available formats from the provided DOM element. If it does not contain any
-        *  nationalPrefixFormattingRule, the one passed-in is retained. The nationalPrefix,
-        *  nationalPrefixFormattingRule and nationalPrefixOptionalWhenFormatting values are provided from
-        *  the parent (territory) element.
-        */
+         * <summary>
+         *  Extracts the available formats from the provided DOM element. If it does not contain any
+         *  nationalPrefixFormattingRule, the one passed-in is retained. The nationalPrefix,
+         *  nationalPrefixFormattingRule and nationalPrefixOptionalWhenFormatting values are provided from
+         *  the parent (territory) element.
+         *  </summary>
+         */
+        /// <param name="metadata">The metadata.</param>
+        /// <param name="element">The element.</param>
+        /// <param name="nationalPrefix">The national prefix.</param>
+        /// <param name="nationalPrefixFormattingRule">The national prefix formatting rule.</param>
+        /// <param name="nationalPrefixOptionalWhenFormatting">If true, national prefix optional when formatting.</param>
         public static void LoadAvailableFormats(PhoneMetadata.Builder metadata,
             XElement element, string nationalPrefix,
             string nationalPrefixFormattingRule,
@@ -362,12 +553,23 @@ namespace PhoneNumbers
             }
         }
 
+        /// <summary>
+        /// Sets the leading digits patterns.
+        /// </summary>
+        /// <param name="numberFormatElement">The number format element.</param>
+        /// <param name="format">The format.</param>
         public static void SetLeadingDigitsPatterns(XElement numberFormatElement, NumberFormat.Builder format)
         {
             foreach (var e in numberFormatElement.Elements(LEADING_DIGITS))
                 format.AddLeadingDigitsPattern(ValidateRE(e.Value, true));
         }
 
+        /// <summary>
+        /// Gets the national prefix formatting rule from element.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="nationalPrefix">The national prefix.</param>
+        /// <returns>A string.</returns>
         public static string GetNationalPrefixFormattingRuleFromElement(XElement element,
             string nationalPrefix)
         {
@@ -378,6 +580,12 @@ namespace PhoneNumbers
             return nationalPrefixFormattingRule;
         }
 
+        /// <summary>
+        /// Gets the domestic carrier code formatting rule from element.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="nationalPrefix">The national prefix.</param>
+        /// <returns>A string.</returns>
         public static string GetDomesticCarrierCodeFormattingRuleFromElement(XElement element,
             string nationalPrefix)
         {
@@ -461,6 +669,12 @@ namespace PhoneNumbers
             return numberDesc;
         }
 
+        /// <summary>
+        /// Sets the relevant desc patterns.
+        /// </summary>
+        /// <param name="metadata">The metadata.</param>
+        /// <param name="element">The element.</param>
+        /// <param name="isShortNumberMetadata">If true, is short number metadata.</param>
         private static void SetRelevantDescPatterns(PhoneMetadata.Builder metadata, XElement element,
             bool isShortNumberMetadata)
         {
@@ -509,6 +723,12 @@ namespace PhoneNumbers
             }
         }
 
+        /// <summary>
+        /// Parses the possible length string to set.
+        /// </summary>
+        /// <param name="possibleLengthString">The possible length string.</param>
+        /// <exception cref="Exception"></exception>
+        /// <returns><![CDATA[SortedSet<int>]]></returns>
         private static SortedSet<int> ParsePossibleLengthStringToSet(string possibleLengthString)
         {
             if (possibleLengthString.Length == 0)
@@ -669,6 +889,13 @@ namespace PhoneNumbers
         }
 
 
+        /// <summary>
+        /// Replace first.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="replacement">The replacement.</param>
+        /// <returns>A string.</returns>
         private static string ReplaceFirst(string input, string value, string replacement)
         {
             var p = input.IndexOf(value, StringComparison.Ordinal);
@@ -678,6 +905,11 @@ namespace PhoneNumbers
         }
 
         // @VisibleForTesting
+        /// <summary>
+        /// Load general desc.
+        /// </summary>
+        /// <param name="metadata">The metadata.</param>
+        /// <param name="element">The element.</param>
         public static void LoadGeneralDesc(PhoneMetadata.Builder metadata, XElement element)
         {
             var generalDescBuilder = ProcessPhoneNumberDescElement(null, element, GENERAL_DESC);
@@ -702,6 +934,14 @@ namespace PhoneNumbers
                     metadata.FixedLine.NationalNumberPattern));
         }
 
+        /// <summary>
+        /// Load country metadata.
+        /// </summary>
+        /// <param name="regionCode">The region code.</param>
+        /// <param name="element">The element.</param>
+        /// <param name="isShortNumberMetadata">If true, is short number metadata.</param>
+        /// <param name="isAlternateFormatsMetadata">If true, is alternate formats metadata.</param>
+        /// <returns>A PhoneMetadata.Builder.</returns>
         public static PhoneMetadata.Builder LoadCountryMetadata(string regionCode,
             XElement element,
             bool isShortNumberMetadata,
@@ -719,6 +959,11 @@ namespace PhoneNumbers
             return metadata;
         }
 
+        /// <summary>
+        /// Gets the country code to region code map.
+        /// </summary>
+        /// <param name="filePrefix">The file prefix.</param>
+        /// <returns><![CDATA[Dictionary<int, List<string>>]]></returns>
         public static Dictionary<int, List<string>> GetCountryCodeToRegionCodeMap(string filePrefix)
         {
             var collection = BuildPhoneMetadata(filePrefix); // todo lite/special build

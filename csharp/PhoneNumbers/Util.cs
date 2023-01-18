@@ -19,7 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("PhoneNumbers.Test")]
+[assembly: InternalsVisibleTo("PhoneNumbers.Test, PublicKey=0024000004800000940000000602000000240000525341310004000001000100fdd39d9591f6d6230e2afd153a1a235c30383ff9be61743b4b3d1cdab2a00fce5e12ee9ca0ab184f0827ba956f47db9d95f30921a70e250cc39bda7770f2f9e57294ef74336acb6d09670dc26f912157585e81c6766f41e8569290c62a2264e361c897f1e4a957e60eaa923d39d666319ffc990e0bec2f11a7d46b165d32069c")]
 
 namespace PhoneNumbers
 {

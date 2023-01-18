@@ -33,7 +33,7 @@ namespace PhoneNumbers
         // Size of short and integer types in bytes.
         private const int ShortNumBytes = sizeof(short);
 
-        private static readonly int IntNumBytes = sizeof(int);
+        private const int IntNumBytes = sizeof(int);
 
         // The number of bytes used to store a description index. It is computed from the size of the
         // description pool containing all the strings.
@@ -86,7 +86,7 @@ namespace PhoneNumbers
             {
                 var prefix = entry.Key;
                 StoreWordInBuffer(phoneNumberPrefixes, prefixSizeInBytes, index, prefix);
-                var lengthOfPrefixRef = (int) Math.Log10(prefix) + 1;
+                var lengthOfPrefixRef = (int)Math.Log10(prefix) + 1;
                 possibleLengthsSet.Add(lengthOfPrefixRef);
                 descriptionsSet.Add(entry.Value);
                 index++;
@@ -144,7 +144,7 @@ namespace PhoneNumbers
         {
             index *= wordSize;
             if (wordSize == ShortNumBytes)
-                buffer.PutShort(index, (short) value);
+                buffer.PutShort(index, (short)value);
             else
                 buffer.PutInt(index, value);
         }
